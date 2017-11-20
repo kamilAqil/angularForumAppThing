@@ -1,5 +1,5 @@
 
-<article class="panel panel-default" *ngFor="let message of messages">
+<article class="panel panel-default">
     <div class="panel-body">
         {{message.content}}
     </div>
@@ -8,7 +8,7 @@
             {{message.username}}
         </div>
         <div class="config">
-            <a href="">Edit</a>
+            <a href="" (click)="onEdit()">Edit</a>
             <a href="">Delete</a>
         </div>
     </footer>

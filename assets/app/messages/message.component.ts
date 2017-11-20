@@ -19,8 +19,9 @@
      `]
  })
  export class MessageComponent {
-    messages = [
-                    new Message('first message','kamil'),
-                    new Message('second message', 'kamil'),
-                ];
+    @Input() message: Message; 
+    
+    onEdit(){
+        alert('it worked');
+    }
  }
