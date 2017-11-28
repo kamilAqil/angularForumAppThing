@@ -1,5 +1,6 @@
- import {Component, Input} from '@angular/core';
+ import {Component, Input, Output, EventEmitter} from '@angular/core';
  import {Message} from './message.model';
+import { MessageService } from './message.service';
  @Component({
      selector: 'app-message',
      templateUrl: './message.component.html',
@@ -19,9 +20,20 @@
      `]
  })
  export class MessageComponent {
-    @Input() message: Message; 
+    @Input() message: Message;
+    @Output() editClicked = new EventEmitter<string>();
+
+    constructor (private messageService: MessageService){
+
+    }
     
     onEdit(){
-        alert('it worked');
+        // this.editClicked.emit('A new value');
+        // alert('it worked');
+        this.editClicked.emit("a new value");
+    }
+
+    onDelete(){
+        this.messageService.deleteMessage(this.message);
     }
  }
