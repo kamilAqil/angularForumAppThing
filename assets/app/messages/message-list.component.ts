@@ -17,6 +17,8 @@ import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 export class MessageListComponent implements OnInit{ 
     messages: Message[] = [];
 
+    
+
     constructor(private messageService: MessageService){};
     ngOnInit(){
        this.messageService.getMessages()
