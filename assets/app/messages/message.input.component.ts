@@ -9,7 +9,7 @@ import { NgForm } from "@angular/forms";
 })
 
 export class messageInputComponent implements OnInit{
-    message:Message;
+    message: Message;
     constructor(private messageService: MessageService){
 
     }
@@ -17,6 +17,10 @@ export class messageInputComponent implements OnInit{
     onSubmit(form: NgForm){
         if(this.message){
             this.message.content = form.value.content;
+            this.messageService.updateMessage(this.message)
+                .subscribe(
+                    result => console.log(result)
+                );
             this.message = null;
         }else{
             console.log(form);
@@ -31,7 +35,8 @@ export class messageInputComponent implements OnInit{
         form.resetForm();
     }
 
-    onClear(form){
+    onClear(form:NgForm){
+        this.message = null;
         form.resetForm();
     }
 
