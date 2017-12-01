@@ -52,7 +52,7 @@ export class MessageService {
         const headers = new Headers({ 'Content-Type': 'application/json' });
         return this.http.patch('http://localhost:3000/message/'+message.messageId, body, { headers: headers })
             .map((response: Response) => response)
-            .catch((error: Response) => Observable.throw(error));
+            .catch((error: Response) => Observable.throw(error.json()));
     }
 
     deleteMessage(message: Message){

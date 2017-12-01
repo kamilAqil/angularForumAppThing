@@ -68,7 +68,7 @@ router.patch('/:id',function(req,res,next){
             }
             res.status(200).json({
                 title: 'Success',
-                obj: messages
+                obj: message
             });
         });
     });
