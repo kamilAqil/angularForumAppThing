@@ -36,4 +36,11 @@ import { MessageService } from './message.service';
                 result => console.log(result)
             );
     }
+
+    belongsToUser(){
+        let userToken = localStorage.getItem('userId');
+        let userIdFromMessage = this.message.userId;
+        return userToken == userIdFromMessage; 
+    }
+
  }

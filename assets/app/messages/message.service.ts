@@ -29,7 +29,10 @@ export class MessageService {
                 console.log('this is ad message result',result);
                 const messageId = result.obj._id;
                 console.log('this is ad message id', result.obj._id);
-                const message = new Message(result.obj.content,'Dummy', messageId ,null);
+                const message = new Message(
+                                                result.obj.content,
+                                                result.obj.user, 
+                                                result.obj._id);
                 this.messages.push(message);
                 return message;
             })
@@ -40,9 +43,15 @@ export class MessageService {
         return this.http.get('http://localhost:3000/message')
             .map((response:Response)=>{
                 const messages = response.json().obj;
+                console.log('Get messages response',messages);
                 let transformedMessages: Message[] = [];  
                 for (let message of messages){
-                    transformedMessages.push(new Message(message.content, 'Dummy',message._id,null));
+                    // console.log('This is fetched message of get message',message);
+                    transformedMessages.push(new Message(
+                                                        message.content, 
+                                                        message.user.firstName,
+                                                        message._id,
+                                                        message.user._id));
                 }  
                 this.messages = transformedMessages;  
                 return transformedMessages;      

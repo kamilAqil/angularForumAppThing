@@ -19,13 +19,11 @@ export class messageInputComponent implements OnInit{
             this.message.content = form.value.content;
             this.messageService.updateMessage(this.message)
                 .subscribe(
-                    result => console.log(result)
+                    result => console.log('result',result)
                 );
             this.message = null;
         }else{
-            console.log(form);
-            console.log('clicked submit');
-            const message = new Message(form.value.content, 'Kamil');
+            const message = new Message(form.value.content,'kamil');
             this.messageService.addMessage(message)
                 .subscribe(
                 data => console.log(data),
